@@ -1,12 +1,6 @@
 @php
-if ( is_tax() || is_archive()) {
-    $term = get_queried_object();
-    $taxonomyCategory = $term->taxonomy . '_' . $term->term_id;
-    $content_id = $taxonomyCategory;
-} else {
     $content_id = get_the_ID();
-}
-$flexible_content = get_field('flexible_content', $content_id);
+    $flexible_content = get_field('flexible_content', $content_id);
 @endphp
 
 

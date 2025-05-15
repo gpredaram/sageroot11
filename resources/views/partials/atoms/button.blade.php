@@ -1,0 +1,3 @@
+<a href="{{ $button['button_link']['url'] }}" target="{{ $button['button_link']['target'] }}" class="inline-flex items-center rounded-md shadow-sm no-underline {{ $button['button_style'] == 'primary' ? 'bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50' : 'bg-indigo-600 text-white hover:bg-indigo-700 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' }}  px-3 py-2 text-sm font-semibold ">
+    {{ $button['button_link']['title'] }}
+</a>

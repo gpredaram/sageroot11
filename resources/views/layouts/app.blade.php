@@ -14,13 +14,15 @@
 
     <div id="app">
 
-      @include('sections.heading')
+      @php($content_id = get_the_ID())
+
+      @include('sections.heading', ['content_id' => $content_id])
 
       <main id="main" class="main">
         @yield('content')
       </main>
 
-      @include('sections.footer')
+      @include('sections.footer' , ['content_id' => $content_id])
     </div>
 
     @php(do_action('get_footer'))
