@@ -1,0 +1,1 @@
+@include('partials.flexible-content')

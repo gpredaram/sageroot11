@@ -1,0 +1,2 @@
+<h2 class="text-5xl font-semibold tracking-tight {{ $data['color_theme'] == 'light' ? 'text-gray-900' : 'text-white' }}  sm:text-8xl">{{ $data['content_title'] }}</h2>
+<div class="mt-8 text-pretty text-lg font-medium {{ $data['color_theme'] == 'light' ? 'text-gray-500' : 'text-gray-400' }}  sm:text-xl/6">{!! $data['content_text'] !!}</div>
