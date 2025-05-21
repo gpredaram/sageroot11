@@ -23,7 +23,7 @@ class Weather extends Composer
         try {
             $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [
                 'q' => 'Madrid',
-                'appid' => OPENWEATHER_API_KEY,
+                'appid' => config('services.openweather.key'),
                 'units' => 'metric',
                 'lang' => 'es',
             ]);

@@ -1,7 +1,6 @@
 <?php
 
 use Roots\Acorn\Application;
-define( 'OPENWEATHER_API_KEY', '0916f87a92f623e84cb7d1b03a7eaf26' );
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +58,5 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+    // dd(env('OPENWEATHER_API_KEY'));
