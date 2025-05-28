@@ -153,3 +153,6 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+add_action('rest_api_init', ['App\Services\CustomPostApi', 'registerRoutes']);
