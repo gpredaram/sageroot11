@@ -59,4 +59,40 @@ collect(['setup', 'filters'])
         }
     });
 
-    // dd(env('OPENWEATHER_API_KEY'));
+add_action('after_setup_theme', function () {
+    global $wpdb;
+    $table = $wpdb->prefix . 'custom_submissions';
+
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table'") !== $table) {
+        $charset = $wpdb->get_charset_collate();
+        $sql = "CREATE TABLE $table (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            name varchar(255) NOT NULL,
+            email varchar(255) NOT NULL,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            PRIMARY KEY  (id)
+        ) $charset;";
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        dbDelta($sql);
+    }
+});
+
+add_action('admin_post_nopriv_custom_form_submission', 'handle_custom_form');
+add_action('admin_post_custom_form_submission', 'handle_custom_form');
+
+function handle_custom_form() {
+    if (!isset($_POST['name'], $_POST['email'])) {
+        wp_die('Faltan campos');
+    }
+
+    global $wpdb;
+    $table = $wpdb->prefix . 'custom_submissions';
+
+    $wpdb->insert($table, [
+        'name' => sanitize_text_field($_POST['name']),
+        'email' => sanitize_email($_POST['email']),
+    ]);
+
+    wp_redirect(home_url('/gracias'));
+    exit;
+}
